@@ -4,5 +4,5 @@ users_controller = Blueprint('users', __name__)
 
 
 @users_controller.route('/')
-def hello_world():
+def root():
     return "Hello Users"
