@@ -6,12 +6,9 @@ from constants import Constants
 class AuthService:
 
     @staticmethod
-    def make_access_token(email: str, fullName: str):
+    def make_access_token(user):
         try:
-            return jwt.encode({
-                "email": email,
-                "fullName": fullName
-            }, Constants.JWT_SECRET, "HS256")
+            return jwt.encode(user, Constants.JWT_SECRET, "HS256")
         except:
             return None
 
