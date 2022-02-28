@@ -1,7 +1,7 @@
 from waitress import serve
 from constants import Constants
 from utils.database_utils import DatabaseUtils
-from utils.routes import app
+from controllers.connector import app
 import werkzeug.serving
 
 
