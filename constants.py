@@ -6,3 +6,4 @@ class Constants:
     PORT = os.environ.get('PORT')
     DATABASE_URL = os.environ.get('DATABASE_URL')
     PROD = os.environ.get('PROD')
+    JWT_SECRET = os.environ.get('JWT_SECRET')
