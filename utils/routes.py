@@ -1,7 +1,6 @@
-from flask import Flask, Response
-from bson import json_util, ObjectId
-from services.user_service import UserService
 import json
+from flask import Flask, Response
+from services.user_service import UserService
 
 app = Flask(__name__)
 app.config["DEBUG"] = False
