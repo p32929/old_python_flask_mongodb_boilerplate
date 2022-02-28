@@ -1,4 +1,4 @@
-from db_models.Users import Users
+from db_models.users import Users
 
 
 class UserService:
