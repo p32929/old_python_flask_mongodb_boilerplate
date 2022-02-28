@@ -1,4 +1,5 @@
-from flask import Flask
+from flask import Flask, Response
+from services.user_service import UserService
 
 app = Flask(__name__)
 app.config["DEBUG"] = False
@@ -12,4 +13,4 @@ def hello_world():
 
 @app.route("/users")
 def users():
-    return "Hello users"
+    return Response(UserService.get_users())
