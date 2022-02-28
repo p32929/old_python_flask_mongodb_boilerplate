@@ -4,5 +4,13 @@ from db_models.Users import Users
 class UserService:
 
     @staticmethod
+    def create_user():
+        Users.col().insert_one({
+            "name": "FF",
+            "email": "EE",
+            "password": "PP",
+        })
+
+    @staticmethod
     def get_users():
-        return Users.col().find({})
+        return list(Users.col().find({}))
