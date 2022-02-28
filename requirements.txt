@@ -1,0 +1,6 @@
+Flask==2.0.1
+mongoengine==0.23.1
+waitress==2.0.0
+mongoengine-mate==0.0.5
+certifi==2021.10.8
+python-dotenv==0.19.2
