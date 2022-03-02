@@ -14,5 +14,8 @@ class AuthService:
 
     @staticmethod
     def verify_token(token):
-        user = jwt.decode(token, Constants.JWT_SECRET, "HS256")
-        return user
+        try:
+            user = jwt.decode(token, Constants.JWT_SECRET, "HS256")
+            return user
+        except:
+            return None
