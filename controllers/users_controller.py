@@ -1,7 +1,7 @@
 from flask import Blueprint
 
 from services.user_service import UserService
-from utils.importants_defs import Responder
+from utils.responder import Responder
 
 users_controller = Blueprint('users', __name__)
 
