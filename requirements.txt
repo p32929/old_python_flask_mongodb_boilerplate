@@ -6,3 +6,4 @@ certifi==2021.10.8
 python-dotenv==0.19.2
 Werkzeug~=2.0.3
 PyJWT==2.3.0
+dnspython==2.2.0
