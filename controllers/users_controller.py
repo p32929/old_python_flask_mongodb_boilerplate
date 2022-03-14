@@ -2,8 +2,6 @@ from datetime import datetime, timezone
 
 from flask import Blueprint, request
 from flask_jwt_extended import jwt_required, get_jwt_identity, create_access_token, get_jwt
-
-from controllers.connector import jwt
 from db_models.blocked_token_model import BlockedTokens
 from services.user_service import UserService
 from utils.data_utils import DataUtils
@@ -24,7 +22,7 @@ def auth_test():
     return current_user
 
 
-@users_controller.post('/login_test')
+@users_controller.post('/login')
 def login_test():
     body = request.form.to_dict()
     email = body.get('email')
@@ -49,10 +47,3 @@ def logout():
         "created_at": now,
     })
     return Responder.ok({"success": True})
-
-
-@jwt.token_in_blocklist_loader
-def check_if_token_revoked(jwt_header, jwt_payload):
-    jti = jwt_payload["jti"]
-    token = BlockedTokens.col().find_one({"jti": jti})
-    return token is not None
