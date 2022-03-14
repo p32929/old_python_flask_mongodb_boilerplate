@@ -1,9 +1,10 @@
 Flask==2.0.3
-mongoengine==0.24.0
+git+git://github.com/p32929/mongoengine_mate-project.git
 waitress==2.0.0
 mongoengine-mate==0.0.5
 certifi==2021.10.8
 python-dotenv==0.19.2
 Werkzeug~=2.0.3
-PyJWT==2.3.0
 dnspython==2.2.0
+Flask-Cors==3.0.10
+flask-jwt-extended==4.3.1

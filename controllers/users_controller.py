@@ -1,6 +1,12 @@
-from flask import Blueprint
+from datetime import datetime, timezone
 
+from flask import Blueprint, request
+from flask_jwt_extended import jwt_required, get_jwt_identity, create_access_token, get_jwt
+
+from controllers.connector import jwt
+from db_models.blocked_token_model import BlockedTokens
 from services.user_service import UserService
+from utils.data_utils import DataUtils
 from utils.responder import Responder
 
 users_controller = Blueprint('users', __name__)
@@ -9,3 +15,44 @@ users_controller = Blueprint('users', __name__)
 @users_controller.route('/')
 def root():
     return Responder.ok(UserService.get_users())
+
+
+@users_controller.get('/auth_test')
+@jwt_required()
+def auth_test():
+    current_user = get_jwt_identity()
+    return current_user
+
+
+@users_controller.post('/login_test')
+def login_test():
+    body = request.form.to_dict()
+    email = body.get('email')
+    logged_in_user = DataUtils.create_or_update_user(email, body)
+    identity = str(logged_in_user.get('_id'))
+    access_token = create_access_token(identity)
+
+    to_be_returned = {
+        "access_token": access_token,
+    }
+    return to_be_returned
+
+
+@users_controller.delete('/logout')
+@jwt_required()
+def logout():
+    jti = get_jwt()["jti"]
+    now = datetime.now(timezone.utc)
+
+    BlockedTokens.col().insert_one({
+        "jti": jti,
+        "created_at": now,
+    })
+    return Responder.ok({"success": True})
+
+
+@jwt.token_in_blocklist_loader
+def check_if_token_revoked(jwt_header, jwt_payload):
+    jti = jwt_payload["jti"]
+    token = BlockedTokens.col().find_one({"jti": jti})
+    return token is not None
