@@ -1,5 +1,5 @@
 Flask==2.0.3
-git+git://github.com/p32929/mongoengine_mate-project.git
+git+https://github.com/p32929/mongoengine_mate-project.git
 waitress==2.0.0
 mongoengine-mate==0.0.5
 certifi==2021.10.8
