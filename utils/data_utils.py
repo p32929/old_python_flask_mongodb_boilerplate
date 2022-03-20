@@ -1,6 +1,6 @@
 import json
 
-from db_models.user_model import Users
+from db_models.user_model import UserModel
 
 
 class DataUtils:
@@ -12,5 +12,5 @@ class DataUtils:
             "fullName": data.get("fullName"),
         }
 
-        obj = Users.col().find_one_and_update({'email': email}, {'$set': body}, upsert=True, new=True)
+        obj = UserModel.col().find_one_and_update({'email': email}, {'$set': body}, upsert=True, new=True)
         return obj

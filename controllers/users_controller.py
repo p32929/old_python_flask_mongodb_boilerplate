@@ -2,7 +2,7 @@ from datetime import datetime, timezone
 
 from flask import Blueprint, request
 from flask_jwt_extended import jwt_required, get_jwt_identity, create_access_token, get_jwt
-from db_models.blocked_token_model import BlockedTokens
+from db_models.blocked_token_model import BlockedTokenModel
 from services.user_service import UserService
 from utils.data_utils import DataUtils
 from utils.responder import Responder
@@ -42,7 +42,7 @@ def logout():
     jti = get_jwt()["jti"]
     now = datetime.now(timezone.utc)
 
-    BlockedTokens.col().insert_one({
+    BlockedTokenModel.col().insert_one({
         "jti": jti,
         "created_at": now,
     })
