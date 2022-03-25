@@ -1,6 +1,5 @@
 Flask==2.0.3
 waitress==2.0.0
-mongoengine-mate==0.0.5
 certifi==2021.10.8
 python-dotenv==0.19.2
 Werkzeug~=2.0.3
@@ -8,3 +7,6 @@ dnspython==2.2.0
 Flask-Cors==3.0.10
 flask-jwt-extended==4.3.1
 git+https://github.com/p32929/mongoengine_mate-project.git
+requests==2.27.1
+beautifulsoup4==4.10.0
+lxml~=4.8.0
