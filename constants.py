@@ -1,9 +1,12 @@
 import os
 from dotenv import load_dotenv
+
 load_dotenv()
 
+
 class Constants:
-    PORT = os.environ.get('PORT')
-    DATABASE_URL = os.environ.get('DATABASE_URL')
-    PROD = os.environ.get('PROD')
-    JWT_SECRET = os.environ.get('JWT_SECRET')
+    PORT = os.environ.get('PORT') or 8000
+    DATABASE_URL = os.environ.get('DATABASE_URL') or ""
+    PROD = os.environ.get('PROD') or None
+    JWT_SECRET = os.environ.get('JWT_SECRET') or "SECRET"
+    TOKEN_VALIDITY = os.environ.get('TOKEN_VALIDITY') or 7

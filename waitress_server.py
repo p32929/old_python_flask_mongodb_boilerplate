@@ -7,7 +7,7 @@ from flask_cors import CORS
 
 def run_server():
     cors = CORS(app)
-    DatabaseUtils.init_cluster_db(Constants.DATABASE_URL)
+    DatabaseUtils.init_local_db()
     werkzeug.run_simple('127.0.0.1', int(Constants.PORT), app, use_debugger=True, use_reloader=True)
 
 
