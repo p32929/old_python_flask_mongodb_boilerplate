@@ -21,6 +21,8 @@ If you like my works and want to support me/my works, feel free to support or do
 ## How to run
 First install the dependencies:
 ```
+python -m venv venv
+venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
