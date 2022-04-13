@@ -14,6 +14,10 @@ users_controller = Blueprint('users', __name__)
 def root():
     return Responder.ok(UserService.get_users())
 
+@users_controller.route('/test')
+def test():
+    return "TETE"
+
 
 @users_controller.get('/auth_test')
 @jwt_required()
