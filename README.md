@@ -19,14 +19,22 @@ Sharing with your friends is just one click away from here
 If you like my works and want to support me/my works, feel free to support or donate. My payment details can be found here: https://p32929.github.io/SendMoney2Me/
 
 ## How to run
-First install the dependencies:
+
+Windows:
 ```
 python -m venv venv
 venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-To run the project, just run the `waitress_server.py` file:
+Linux/Mac:
+```
+python -m venv venv
+source venv\Scripts\activate
+pip install -r requirements.txt
+```
+
+Now run/execute the `waitress_server.py` file:
 ```
 python waitress_server.py
 ```
